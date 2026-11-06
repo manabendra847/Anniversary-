@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 2nd Anniversary, My Love! 💕</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        },
+                        blush: '#ffd1dc',
+                        champagne: '#f7e7ce',
+                        gold: '#d4af37'
+                    },
+                    fontFamily: {
+                        cursive: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(244, 63, 94, 0.4)' },
+                            '100%': { boxShadow: '0 0 30px rgba(244, 63, 94, 0.8), 0 0 45px rgba(212, 175, 55, 0.5)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Canvas Overlay */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(225, 29, 72, 0.15);
+        }
+
+        .glass-card-dark {
+            background: rgba(136, 19, 55, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 209, 220, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #e11d48 0%, #fb7185 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Heart Beat Animation */
+        .heart-beat {
+            animation: beat 1.2s infinite ease-in-out;
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.25);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Photo Hover 3D Tilt & Glow */
+        .photo-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) rotateX(4deg) rotateY(-4deg) scale(1.02);
+            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.3), 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Music Equalizer Bars */
+        .eq-bar {
+            width: 3px;
+            background-color: #f43f5e;
+            border-radius: 3px;
+            animation: equalize 1.2s infinite ease-in-out alternate;
+        }
+
+        .eq-bar:nth-child(1) {
+            height: 16px;
+            animation-delay: -0.4s;
+        }
+
+        .eq-bar:nth-child(2) {
+            height: 24px;
+            animation-delay: -0.2s;
+        }
+
+        .eq-bar:nth-child(3) {
+            height: 12px;
+            animation-delay: -0.6s;
+        }
+
+        .eq-bar:nth-child(4) {
+            height: 20px;
+            animation-delay: -0.1s;
+        }
+
+        @keyframes equalize {
+            0% {
+                height: 6px;
+            }
+
+            100% {
+                height: 24px;
+            }
+        }
+
+        .paused .eq-bar {
+            animation-play-state: paused;
+            height: 6px !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffe4e6;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f43f5e;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #be123c;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-rose-50 via-rose-100 to-blush text-gray-800 font-sans antialiased overflow-x-hidden selection:bg-rose-400 selection:text-white">
+
+    <!-- Landing Splash Overlay for Guaranteed Audio Autoplay -->
+    <div id="splashOverlay"
+        class="fixed inset-0 z-50 bg-gradient-to-br from-rose-900 via-rose-800 to-rose-950 flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
+        <div class="space-y-6 max-w-md animate-float">
+            <div
+                class="w-24 h-24 bg-rose-500/30 border-2 border-rose-300 rounded-full flex items-center justify-center mx-auto shadow-2xl heart-beat">
+                <i class="fa-solid fa-heart text-5xl text-rose-300"></i>
+            </div>
+            <h1 class="font-cursive text-5xl sm:text-6xl text-rose-200 font-bold">2 Years of Love</h1>
+            <p class="text-rose-100/90 text-sm font-serif italic">A special celebration created with love, just for you.
+            </p>
+            <button onclick="enterCelebration()"
+                class="mt-4 px-8 py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-gold text-white rounded-full font-semibold shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 mx-auto text-base">
+                <i class="fa-solid fa-music"></i>
+                <span>Tap to Open Celebration 💖</span>
+            </button>
+            <p class="text-rose-300/60 text-xs tracking-wider uppercase">Turn up your volume for music ✨</p>
+        </div>
+    </div>
+
+    <!-- Floating Canvas for Hearts Particles -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-40 bg-white/70 backdrop-blur-md border-b border-rose-200/50 transition-all duration-300 px-4 py-3">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-cursive text-3xl font-bold text-rose-600 tracking-wide flex items-center gap-2">
+                <span>Our 2 Years</span>
+                <i class="fa-solid font-sans text-rose-500 text-lg heart-beat">❤️</i>
+            </a>
+            <div class="hidden md:flex items-center space-x-6 font-medium text-sm text-gray-700">
+                <a href="#hero" class="hover:text-rose-600 transition-colors">Home</a>
+                <a href="#counter" class="hover:text-rose-600 transition-colors">Together Time</a>
+                <a href="#gallery" class="hover:text-rose-600 transition-colors">Joint Photos</a>
+                <a href="#reasons" class="hover:text-rose-600 transition-colors">I Love You</a>
+            </div>
+            <button onclick="openLoveLetter()"
+                class="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-md hover:shadow-lg transition-all transform hover:scale-105 flex items-center gap-2">
+                <i class="fa-solid fa-envelope-open-text"></i> Open Love Letter
+            </button>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Hero Banner -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center z-20 space-y-8">
+            <!-- Top Animated Badge -->
+            <div
+                class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 border border-rose-300 shadow-sm text-rose-600 font-semibold text-sm animate-float">
+                <i class="fa-solid fa-sparkles text-gold"></i>
+                <span>Celebrating 730 Days of Pure Magic</span>
+                <i class="fa-solid fa-sparkles text-gold"></i>
+            </div>
+
+            <!-- Dynamic Animated Main Heading -->
+            <div class="space-y-4">
+                <h2 class="font-cursive text-4xl sm:text-6xl text-rose-500 font-bold drop-shadow-sm">Happy 2nd
+                    Anniversary</h2>
+                <h1 class="font-serif text-4xl sm:text-7xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                    To My Forever & Always <br>
+                    <span class="gradient-text font-cursive text-5xl sm:text-8xl inline-block mt-2">My Dearest
+                        Love</span>
+                </h1>
+            </div>
+
+            <p class="max-w-2xl mx-auto text-gray-600 text-base sm:text-lg font-light leading-relaxed">
+                Two years ago, we began our beautiful journey together. Today, I celebrate every laugh, every hug, every
+                memory, and every step we’ve taken hand-in-hand.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#gallery"
+                    class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-rose-500 via-rose-600 to-pink-500 text-white rounded-full font-semibold shadow-lg hover:shadow-rose-300/50 hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-images"></i> View Our Photos
+                </a>
+                <button onclick="openLoveLetter()"
+                    class="w-full sm:w-auto px-8 py-3.5 bg-white/80 text-rose-600 border border-rose-300 hover:bg-rose-50 rounded-full font-semibold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-heart text-rose-500"></i> Read Special Message
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Live Together Counter -->
+    <section id="counter"
+        class="py-16 px-4 bg-gradient-to-r from-rose-900 via-rose-800 to-rose-950 text-white relative shadow-2xl">
+        <div class="max-w-5xl mx-auto text-center space-y-8 relative z-20">
+            <div class="space-y-2">
+                <p class="font-cursive text-3xl text-rose-300">Counting Every Single Moment</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold tracking-wide">2 Years of Togetherness</h2>
+            </div>
+
+            <!-- Counter Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
+                <div
+                    class="glass-card-dark p-6 rounded-2xl flex flex-col items-center justify-center transform hover:scale-105 transition-transform border border-rose-400/30">
+                    <span id="days" class="text-4xl sm:text-6xl font-bold font-serif text-rose-200">730</span>
+                    <span
+                        class="text-xs sm:text-sm uppercase tracking-widest text-rose-300 mt-2 font-medium">Days</span>
+                </div>
+                <div
+                    class="glass-card-dark p-6 rounded-2xl flex flex-col items-center justify-center transform hover:scale-105 transition-transform border border-rose-400/30">
+                    <span id="hours" class="text-4xl sm:text-6xl font-bold font-serif text-rose-200">00</span>
+                    <span
+                        class="text-xs sm:text-sm uppercase tracking-widest text-rose-300 mt-2 font-medium">Hours</span>
+                </div>
+                <div
+                    class="glass-card-dark p-6 rounded-2xl flex flex-col items-center justify-center transform hover:scale-105 transition-transform border border-rose-400/30">
+                    <span id="minutes" class="text-4xl sm:text-6xl font-bold font-serif text-rose-200">00</span>
+                    <span
+                        class="text-xs sm:text-sm uppercase tracking-widest text-rose-300 mt-2 font-medium">Minutes</span>
+                </div>
+                <div
+                    class="glass-card-dark p-6 rounded-2xl flex flex-col items-center justify-center transform hover:scale-105 transition-transform border border-rose-400/30">
+                    <span id="seconds" class="text-4xl sm:text-6xl font-bold font-serif text-rose-200">00</span>
+                    <span
+                        class="text-xs sm:text-sm uppercase tracking-widest text-rose-300 mt-2 font-medium">Seconds</span>
+                </div>
+            </div>
+
+            <p class="text-rose-200/80 text-sm italic font-serif">"...and I'd choose you all over again in a heartbeat."
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Joint Photo Showcase Section -->
+    <section id="gallery" class="py-20 px-4 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-rose-600 font-semibold text-xs tracking-widest uppercase">Precious Moments</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-900">Our Photo Gallery</h2>
+                <p class="text-gray-600 text-sm max-w-xl mx-auto">Hover over our photos to reveal special memories and
+                    click any photo to enlarge!</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-rose-400 to-gold mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Photo Card 1 -->
+                <div class="photo-card relative rounded-2xl overflow-hidden shadow-xl bg-white group cursor-pointer"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1000&q=80', 'Sweet Moments Together')">
+                    <div class="aspect-w-4 aspect-h-3 h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1000&q=80"
+                            alt="Couple Photo 1"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x400/f43f5e/ffffff?text=Our+Sweet+Moments'">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gold text-xs font-semibold uppercase tracking-wider">Memory #1</span>
+                            <h4 class="text-white font-serif font-bold text-lg mt-1">Sweet Moments Together</h4>
+                            <p class="text-rose-200 text-xs mt-1">A day full of laughter and endless joy.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-full p-2 shadow-md text-rose-500 transform group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo Card 2 -->
+                <div class="photo-card relative rounded-2xl overflow-hidden shadow-xl bg-white group cursor-pointer"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80', 'Sunset Walk & Conversations')">
+                    <div class="aspect-w-4 aspect-h-3 h-72 overflow-hidden relative">
+                        <img src="Letter.jpg" alt="Couple Photo 2"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x400/f43f5e/ffffff?text=Sunset+Walks'">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gold text-xs font-semibold uppercase tracking-wider">Memory #2</span>
+                            <h4 class="text-white font-serif font-bold text-lg mt-1">Sunset Walk & Conversations</h4>
+                            <p class="text-rose-200 text-xs mt-1">Holding hands while watching the warm golden sky.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-full p-2 shadow-md text-rose-500 transform group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo Card 3 -->
+                <div class="photo-card relative rounded-2xl overflow-hidden shadow-xl bg-white group cursor-pointer"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80', 'Our Cozy Date Night')">
+                    <div class="aspect-w-4 aspect-h-3 h-72 overflow-hidden relative">
+                        <img src="photo1.5.jpg" alt="Couple Photo 3"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x400/f43f5e/ffffff?text=Cozy+Date+Night'">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gold text-xs font-semibold uppercase tracking-wider">Memory #3</span>
+                            <h4 class="text-white font-serif font-bold text-lg mt-1">Our Cozy Date Night</h4>
+                            <p class="text-rose-200 text-xs mt-1">Soft music, delicious food, and just you & me.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-full p-2 shadow-md text-rose-500 transform group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo Card 4 -->
+                <div class="photo-card relative rounded-2xl overflow-hidden shadow-xl bg-white group cursor-pointer"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80', 'Your Beautiful Smile')">
+                    <div class="aspect-w-4 aspect-h-3 h-72 overflow-hidden relative">
+                        <img src="photo1.9.jpg" alt="Couple Photo 4"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x400/f43f5e/ffffff?text=Your+Smile'">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gold text-xs font-semibold uppercase tracking-wider">Memory #4</span>
+                            <h4 class="text-white font-serif font-bold text-lg mt-1">Your Beautiful Smile</h4>
+                            <p class="text-rose-200 text-xs mt-1">The reason my world lights up every single day.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-full p-2 shadow-md text-rose-500 transform group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo Card 5 -->
+                <div class="photo-card relative rounded-2xl overflow-hidden shadow-xl bg-white group cursor-pointer"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=1000&q=80', 'Weekend Getaway')">
+                    <div class="aspect-w-4 aspect-h-3 h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&w=1000&q=80"
+                            alt="Couple Photo 5"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x400/f43f5e/ffffff?text=Weekend+Getaway'">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gold text-xs font-semibold uppercase tracking-wider">Memory #5</span>
+                            <h4 class="text-white font-serif font-bold text-lg mt-1">Weekend Getaway</h4>
+                            <p class="text-rose-200 text-xs mt-1">Escaping the world together to create our little
+                                paradise.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-full p-2 shadow-md text-rose-500 transform group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Photo Card 6 -->
+                <div class="photo-card relative rounded-2xl overflow-hidden shadow-xl bg-white group cursor-pointer"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1000&q=80', 'Forever Hand in Hand')">
+                    <div class="aspect-w-4 aspect-h-3 h-72 overflow-hidden relative">
+                        <img src="couple.png" alt="Couple Photo 6"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x400/f43f5e/ffffff?text=Hand+in+Hand'">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gold text-xs font-semibold uppercase tracking-wider">Memory #6</span>
+                            <h4 class="text-white font-serif font-bold text-lg mt-1">Forever Hand in Hand</h4>
+                            <p class="text-rose-200 text-xs mt-1">Here is to infinity and beyond with you.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-full p-2 shadow-md text-rose-500 transform group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Reasons Why I Love You Card Grid -->
+    <section id="reasons" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center space-y-3 mb-16">
+            <span class="text-rose-600 font-semibold text-xs tracking-widest uppercase">Little Things That Matter</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-900">Poetry written for you</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-rose-400 to-gold mx-auto rounded-full mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Reason 1 -->
+            <div
+                class="glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-t-4 border-t-rose-400">
+                <div
+                    class="w-12 h-12 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-smile-beam"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-gray-800 mb-2">Your Kindness & Smile</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">তুমি যেতিয়া<br>
+                    মোৰ শুকান আলিবাটটোৰ<br>
+                    সেউজীয়খিনি হৈ আহিছিলা,<br>
+                    তোমাক চিৰসেউজ কৰি ৰাখি থোৱাৰ হেপাহকণ<br>
+                    মোৰ তেতিয়াই জাগি উঠিছিল।<br><br>
+                    তুমি যেতিয়া<br>
+                    মোৰ নিতাল গীতটিৰ<br>
+                    নতুন শব্দ হৈ আহিছিলা,<br>
+                    তোমাক ছন্দোবদ্ধ কৰি ৰাখিবলৈ<br>
+                    তেতিয়াই চেষ্টা কৰিছিলো।
+            </div>
+
+            <!-- Reason 2 -->
+            <div
+                class="glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-t-4 border-t-rose-400">
+                <div
+                    class="w-12 h-12 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-gray-800 mb-2">Unconditional Support</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">অহিবাচোন মোৰ কাষলৈ<br>
+                    উঠন বুকুৰ উম লৈ<br>
+                    ভাগৰুৱা মন আকাশ ৰৈ থাকে <br>
+                    মৰমৰ মাজত মুখ গুজিবলৈ...<br><br>
+
+                    শৰত বোৰ দেখা পাওঁ<br>
+                    তোমাৰ বৰণত<br>
+                    চুলি টাৰিও অবাধ্য <br>
+                    বাউলি ফাগুনত । <br>
+
+                    অকমানি জ্বলা জুইত<br>
+                    জ্বলি যাব খোজো<br>
+                    মৃগনয়নত জিলিকে <br>
+                    ভৰ যৌৱনৰ প্ৰকোব।<br><br>
+
+                    মই যে সদায় আতুৰ<br>
+                    তুমি যে স্মৃতি কাতৰ<br>
+                    তুমিয়েই লগৰী<br>
+                    মোৰ জীৱন বাটৰ।<br><br>
+
+                    চাবাচোন আহি <br>
+                    মোৰ কাষলৈ<br>
+                    কোমল চৱনিৰ ৰং লৈ<br>
+                    কিদৰে অসহায় হৈ থাকে<br>
+                    তোমাৰ আকুল বিৰিখ হৈ।</p>
+            </div>
+
+            <!-- Reason 3 -->
+            <div
+                class="glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-t-4 border-t-rose-400">
+                <div
+                    class="w-12 h-12 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-laugh-squint"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl text-gray-800 mb-2">You are Loyal & simple</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">সৰগ খনি বিচাৰিছিলো<br>
+                    পোৱাৰ আশা হেৰাই<br>
+                    নাওঁখনিতো বহি আছিলো<br>
+                    দুখৰ ভাগৰ জীৰাই।<br><br>
+
+                    এতিয়া মোৰ বাবেই<br>
+                    তুমি আহিলা<br>
+                    সৰগ ৰচিলা<br>
+                    কাহিনিওতো লিখিলা<br>
+                    সুপ্ত প্ৰেমো জগালা<br><br>
+
+                    মই চিৰ ঋণী<br>
+                    আৰু তোমাৰ ধনী।</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- DECORATIVE NAMES SECTION -->
+    <section id="names-signature" class="py-16 px-4 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center relative z-20">
+            <div
+                class="glass-card rounded-3xl p-8 sm:p-12 border-2 border-rose-300 shadow-2xl relative overflow-hidden group hover:shadow-rose-400/40 transition-all duration-500">
+
+                <!-- Background Glowing Orbs -->
+                <div class="absolute -top-12 -left-12 w-32 h-32 bg-rose-400/20 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-gold/20 rounded-full blur-2xl"></div>
+
+                <!-- Decorative Top Ribbon -->
+                <div
+                    class="inline-flex items-center justify-center gap-3 mb-6 px-6 py-1.5 rounded-full bg-rose-100/80 border border-rose-300 text-rose-600 font-semibold text-xs tracking-widest uppercase">
+                    <i class="fa-solid fa-sparkles text-gold"></i>
+                    <span>Together Forever</span>
+                    <i class="fa-solid fa-sparkles text-gold"></i>
+                </div>
+
+                <!-- Decorative Names Layout -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 my-4">
+                    <!-- Partner 1 Name -->
+                    <div class="transform group-hover:scale-105 transition-transform duration-300">
+                        <h2
+                            class="font-cursive text-5xl sm:text-7xl font-bold gradient-text tracking-wide drop-shadow-sm">
+                            <br>নিতুস্মিতা
+                        </h2>
+                    </div>
+
+                    <!-- Heart Emblem Divider -->
+                    <div class="relative my-2 sm:my-0 flex items-center justify-center">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-tr from-rose-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg heart-beat">
+                            <i class="fa-solid fa-heart text-2xl text-white"></i>
+                        </div>
+                    </div>
+
+                    <!-- Partner 2 Name -->
+                    <div class="transform group-hover:scale-105 transition-transform duration-300">
+                        <h2
+                            class="font-cursive text-5xl sm:text-7xl font-bold gradient-text tracking-wide drop-shadow-sm">
+                            মানবেন্দ্ৰ
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Decorative Bottom Subtitle -->
+                <p class="font-serif italic text-rose-800/80 text-sm sm:text-base mt-6">
+                    "Two hearts bound by love, woven together for a lifetime of happiness."
+                </p>
+
+                <!-- Corner Floral Accents -->
+                <div class="absolute top-3 left-4 text-rose-300/40 text-xl">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <div class="absolute bottom-3 right-4 text-rose-300/40 text-xl">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Floating Audio / Music Player Widget -->
+    <div
+        class="fixed bottom-6 left-6 z-40 bg-white/90 backdrop-blur-md border border-rose-200 rounded-full shadow-2xl p-2 pr-5 flex items-center gap-3 transition-all transform hover:scale-105">
+        <button id="playBtn" onclick="toggleAudio()"
+            class="w-10 h-10 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-full flex items-center justify-center shadow-md hover:opacity-90 transition-all">
+            <i id="playIcon" class="fa-solid fa-play text-sm"></i>
+        </button>
+        <div class="flex flex-col">
+            <span class="text-xs font-bold text-gray-800">Our Special Song</span>
+            <span class="text-[10px] text-rose-500 font-medium">Playing Love Melodies</span>
+        </div>
+        <!-- Animated Equalizer Bars -->
+        <div id="equalizer" class="flex items-center gap-1 ml-2 paused">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="anniversaryAudio" loop preload="auto">
+        <!-- Replace the src URL below with your own song link or filename (e.g., "my-song.mp3") -->
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Love Letter Modal -->
+    <div id="loveLetterModal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-lg w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl border-2 border-rose-300 transform scale-90 transition-all duration-300"
+            id="modalCard">
+            <!-- Close Button -->
+            <button onclick="closeLoveLetter()"
+                class="absolute top-4 right-4 w-8 h-8 bg-rose-100 hover:bg-rose-200 text-rose-600 rounded-full flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Letter Content -->
+            <div class="space-y-4 text-center">
+                <div
+                    class="w-16 h-16 bg-rose-500 text-white rounded-full flex items-center justify-center mx-auto text-2xl shadow-lg heart-beat">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h3 class="font-cursive text-4xl text-rose-600 font-bold">My Dearest Love,</h3>
+                <div
+                    class="text-gray-700 text-sm leading-relaxed font-serif space-y-3 text-left max-h-60 overflow-y-auto pr-2">
+                    <p>Happy 2nd Anniversary!</p>
+                    <p>Looking back over the last two years, I can proudly say that falling in love with you is the best
+                        thing that ever happened to my life. Every single moment shared with you feels special and
+                        meaningful.</p>
+                    <p>Thank you for your warmth, your sweetness, your endless patience, and for loving me just the way
+                        I am. Here is to celebrating 2 wonderful years and a lifetime of happiness ahead!</p>
+                </div>
+                <div class="pt-4 border-t border-rose-200">
+                    <p class="font-cursive text-2xl text-rose-600 font-semibold">Forever Yours ❤️</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Photo Gallery -->
+    <div id="lightboxModal"
+        class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300"
+        onclick="closeLightbox()">
+        <div class="relative max-w-3xl w-full" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="Enlarged Photo"
+                class="w-full h-auto max-h-[80vh] object-contain rounded-2xl shadow-2xl border-4 border-white">
+            <p id="lightboxCaption" class="text-center text-white font-serif text-lg mt-4 font-medium"></p>
+            <button onclick="closeLightbox()"
+                class="absolute -top-10 right-0 text-white text-2xl hover:text-rose-400 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. Interactive Canvas Floating Hearts Effect
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 25;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 12 + 8;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.color = `hsla(${Math.random() * 20 + 340}, 100%, 75%, ${this.opacity})`;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                // Draw heart shape
+                const topCurveHeight = this.size * 0.3;
+                ctx.moveTo(0, topCurveHeight);
+                ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+                ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+                ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+                ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // 2. Dynamic Live Counter (2 Years calculated dynamic counter)
+        // Setting start date 2 years ago from today
+        const startDate = new Date();
+        startDate.setFullYear(startDate.getFullYear() - 2);
+
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // 3. Audio Player Logic & Web Audio API Fallback
+        const audio = document.getElementById('anniversaryAudio');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        const equalizer = document.getElementById('equalizer');
+
+        let synthAudioContext = null;
+        let isSynthPlaying = false;
+        let synthInterval = null;
+
+        function setAudioState(isPlaying) {
+            if (isPlaying) {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                equalizer.classList.remove('paused');
+            } else {
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                equalizer.classList.add('paused');
+            }
+        }
+
+        // Web Audio Synthesizer Fallback if external audio is blocked or fails
+        function startSynthMelody() {
+            if (isSynthPlaying) return;
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                synthAudioContext = new AudioCtx();
+                const notes = [261.63, 329.63, 392.00, 493.88, 523.25, 493.88, 392.00, 329.63]; // Soft romantic arpeggio (Cmaj7)
+                let noteIdx = 0;
+
+                synthInterval = setInterval(() => {
+                    if (!synthAudioContext || synthAudioContext.state === 'closed') return;
+                    const osc = synthAudioContext.createOscillator();
+                    const gain = synthAudioContext.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(notes[noteIdx], synthAudioContext.currentTime);
+                    gain.gain.setValueAtTime(0.08, synthAudioContext.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, synthAudioContext.currentTime + 1.2);
+                    osc.connect(gain);
+                    gain.connect(synthAudioContext.destination);
+                    osc.start();
+                    osc.stop(synthAudioContext.currentTime + 1.2);
+                    noteIdx = (noteIdx + 1) % notes.length;
+                }, 400);
+
+                isSynthPlaying = true;
+                setAudioState(true);
+            } catch (e) {
+                console.log("Synth audio failed:", e);
+            }
+        }
+
+        function stopSynthMelody() {
+            if (synthInterval) clearInterval(synthInterval);
+            if (synthAudioContext) {
+                synthAudioContext.close();
+                synthAudioContext = null;
+            }
+            isSynthPlaying = false;
+        }
+
+        function enterCelebration() {
+            const overlay = document.getElementById('splashOverlay');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+
+            // Try playing HTML5 Audio first
+            audio.play().then(() => {
+                setAudioState(true);
+            }).catch(err => {
+                console.log("Audio URL blocked, falling back to Web Audio synth:", err);
+                startSynthMelody();
+            });
+        }
+
+        function toggleAudio() {
+            if (isSynthPlaying) {
+                stopSynthMelody();
+                setAudioState(false);
+                return;
+            }
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    setAudioState(true);
+                }).catch(() => {
+                    startSynthMelody();
+                });
+            } else {
+                audio.pause();
+                setAudioState(false);
+            }
+        }
+
+        // 4. Modal & Lightbox Functions
+        function openLoveLetter() {
+            const modal = document.getElementById('loveLetterModal');
+            const card = document.getElementById('modalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-90');
+            card.classList.add('scale-100');
+        }
+
+        function closeLoveLetter() {
+            const modal = document.getElementById('loveLetterModal');
+            const card = document.getElementById('modalCard');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-90');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function openLightbox(src, caption) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            img.src = src;
+            cap.innerText = caption;
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+    </script>
+</body>
+
+</html>
